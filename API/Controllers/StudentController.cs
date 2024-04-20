@@ -1,21 +1,25 @@
-﻿using API.DTOs.Student;
+﻿using API.DTOs.StudentDTOs;
+using API.Services.StudentServices;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class StudentController : ControllerBase
+public sealed class StudentController(IMapper mapper, IStudentService service) : ControllerBase
 {
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
-        return Ok(GetType().Name);
+        var student = await service.GetAsync(id);
+        return Ok(mapper.Map<StudentGetResponseDTO>(student));
     }
 
     [HttpPost("[action]")]
-    public IActionResult Create([FromBody] StudentCreateRequestDTO request)
+    public async Task<IActionResult> Create([FromBody] StudentCreateRequestDTO request)
     {
-        return Ok(GetType().Name);
+        var student = await service.CreateAsync(request);
+        return Ok(mapper.Map<StudentCreateResponseDTO>(student));
     }
 }

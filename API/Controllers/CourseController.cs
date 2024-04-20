@@ -1,17 +1,19 @@
-﻿using API.DTOs.Course;
-using API.DTOs.Student;
+﻿using API.DTOs.CourseDTOs;
+using API.Services.CourseServices;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CourseController : ControllerBase
+public sealed class CourseController(IMapper mapper, ICourseService service) : ControllerBase
 {
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
-        return Ok(GetType().Name);
+        var course = await service.GetAsync(id);
+        return Ok(mapper.Map<CourseGetResponseDTO>(course));
     }
 
     [HttpPost("{id}/[action]/{studentId}")]
@@ -21,8 +23,9 @@ public class CourseController : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public IActionResult Create([FromBody] CourseCreateRequestDTO request)
+    public async Task<IActionResult> Create([FromBody] CourseCreateRequestDTO request)
     {
-        return Ok(GetType().Name);
+        var course = await service.CreateAsync(request);
+        return Ok(mapper.Map<CourseCreateResponseDTO>(course));
     }
 }
