@@ -1,5 +1,5 @@
-﻿using API.DTOs.StudentDTOs;
-using API.Domain;
+﻿using API.Domain;
+using API.DTOs.StudentDTOs;
 
 namespace API.Services.StudentServices;
 

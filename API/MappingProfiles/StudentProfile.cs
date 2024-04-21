@@ -7,7 +7,7 @@ namespace API.MappingProfiles;
 
 public class StudentProfile : Profile
 {
-    public StudentProfile() 
+    public StudentProfile()
     {
         CreateMap<Student, StudentEntity>();
         CreateMap<StudentEntity, Student>();

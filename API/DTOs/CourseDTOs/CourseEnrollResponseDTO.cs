@@ -1,6 +1,4 @@
-﻿using API.DTOs.StudentDTOs;
-
-namespace API.DTOs.CourseDTOs;
+﻿namespace API.DTOs.CourseDTOs;
 
 public sealed record CourseEnrollResponseDTO
 {

@@ -7,7 +7,7 @@ namespace API.MappingProfiles;
 
 public class CourseProfile : Profile
 {
-    public CourseProfile() 
+    public CourseProfile()
     {
         CreateMap<Course, CourseEntity>();
         CreateMap<CourseEntity, Course>()
@@ -18,7 +18,7 @@ public class CourseProfile : Profile
 
         CreateMap<CourseCreateRequestDTO, Course>();
         CreateMap<Course, CourseCreateResponseDTO>();
-            
+
         CreateMap<Course, CourseEnrollResponseDTO>()
             .ForMember(dest => dest.StudentNames, opt => opt.MapFrom(src => src.Students.Select(s => s.Name)));
     }

@@ -1,5 +1,5 @@
-﻿using API.Domain;
-using API.Data.Entities;
+﻿using API.Data.Entities;
+using API.Domain;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 

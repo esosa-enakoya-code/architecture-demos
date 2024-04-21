@@ -1,7 +1,6 @@
 ﻿using API.Data.Repositories.CourseRepositories;
 using API.Domain;
 using API.DTOs.CourseDTOs;
-using API.Services.StudentServices;
 using AutoMapper;
 
 namespace API.Services.CourseServices;

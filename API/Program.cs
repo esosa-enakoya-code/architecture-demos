@@ -1,9 +1,9 @@
 using API.Data;
-using API.Services.StudentServices;
-using API.Data.Repositories.StudentRepositories;
 using API.Data.Repositories.CourseRepositories;
-using Microsoft.EntityFrameworkCore;
+using API.Data.Repositories.StudentRepositories;
 using API.Services.CourseServices;
+using API.Services.StudentServices;
+using Microsoft.EntityFrameworkCore;
 
 namespace API;
 
