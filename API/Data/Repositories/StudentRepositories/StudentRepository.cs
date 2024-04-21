@@ -10,6 +10,7 @@ public sealed class StudentRepository(IMapper mapper, BaseDbContext context) : A
     public async Task<Student> GetAsync(int id)
     {
         var studentEntity = await Context.Students
+            .Include(se => se.Course)
             .AsNoTracking()
             .FirstOrDefaultAsync(se => se.Id == id)
                 ?? throw new KeyNotFoundException("No student found");
