@@ -1,9 +1,6 @@
-using API.Data;
-using API.Data.Repositories.CourseRepositories;
-using API.Data.Repositories.StudentRepositories;
-using API.Services.CourseServices;
-using API.Services.StudentServices;
 using Microsoft.EntityFrameworkCore;
+using Student;
+using Course;
 
 namespace API;
 
@@ -18,15 +15,12 @@ public class Program
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-        services.AddAutoMapper(typeof(Program).Assembly);
-        services.AddDbContext<BaseDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DbConnectionString")));
 
-        services.AddScoped<IStudentService, StudentService>();
-        services.AddScoped<IStudentRepository, StudentRepository>();
+        var connectionString = configuration.GetConnectionString("DbConnectionString") 
+            ?? throw new InvalidOperationException("No DbConnectionString Found");
 
-        services.AddScoped<ICourseService, CourseService>();
-        services.AddScoped<ICourseRepository, CourseRepository>();
+        services.AddStudentModule(connectionString);
+        services.AddCourseModule(connectionString);
 
         var app = builder.Build();
 
