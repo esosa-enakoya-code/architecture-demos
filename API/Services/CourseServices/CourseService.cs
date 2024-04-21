@@ -1,6 +1,7 @@
 ﻿using API.Data.Repositories.CourseRepositories;
 using API.Domain;
 using API.DTOs.CourseDTOs;
+using API.Services.StudentServices;
 using AutoMapper;
 
 namespace API.Services.CourseServices;
@@ -10,6 +11,11 @@ public class CourseService(IMapper mapper, ICourseRepository repository) : ICour
     public async Task<Course> GetAsync(int id)
     {
         return await repository.GetAsync(id);
+    }
+
+    public async Task<Course> EnrollAsync(CourseEnrollRequestDTO newEnrollment)
+    {
+        return await repository.AddStudentToCourseAsync(newEnrollment.Id, newEnrollment.StudentId);
     }
 
     public async Task<Course> CreateAsync(CourseCreateRequestDTO newCourse)

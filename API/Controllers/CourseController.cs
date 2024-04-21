@@ -17,9 +17,10 @@ public sealed class CourseController(IMapper mapper, ICourseService service) : C
     }
 
     [HttpPost("{id}/[action]/{studentId}")]
-    public IActionResult Enroll([FromRoute] int id, [FromRoute] int studentId)
+    public async Task<IActionResult> Enroll([FromRoute] int id, [FromRoute] int studentId)
     {
-        return Ok(GetType().Name);
+        var course = await service.EnrollAsync(new CourseEnrollRequestDTO(id, studentId));
+        return Ok(mapper.Map<CourseEnrollResponseDTO>(course));
     }
 
     [HttpPost("[action]")]
