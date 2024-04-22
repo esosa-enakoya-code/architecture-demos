@@ -14,6 +14,7 @@ public static class StudentModuleConfig
         services.AddDbContext<StudentDbContext>(o => o.UseSqlServer(dbConnectionString));
         services.AddScoped<IStudentRepository, StudentRepository>();
         services.AddScoped<IStudentService, StudentService>();
+        services.AddScoped(provider => new Lazy<IStudentService>(() => provider.GetRequiredService<IStudentService>()));
         services.AddAutoMapper(typeof(StudentModuleConfig).Assembly);
 
         return services;

@@ -17,5 +17,10 @@ public class StudentProfile : Profile
 
         CreateMap<StudentCreateRequestDTO, StudentDomain>();
         CreateMap<StudentDomain, StudentCreateResponseDTO>();
+
+        CreateMap<StudentDomain, StudentEnrollResponseDTO>();
+
+        CreateMap<List<StudentDomain>, StudentGetBatchResponseDTO>()
+            .ForMember(dest => dest.Students, opt => opt.MapFrom(src => src));
     }
 }

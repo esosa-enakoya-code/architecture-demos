@@ -24,19 +24,12 @@ public class CourseRepository(IMapper mapper, CourseDbContext context) : Abstrac
             .FirstOrDefaultAsync(ce => ce.Id == id)
                 ?? throw new KeyNotFoundException("No course found");
 
-        /*
-        var studentEntity = await Context.StudentIds
-            .FirstOrDefaultAsync(se => se.Id == studentId)
-                ?? throw new KeyNotFoundException("No student found");
-
-        var linkedStudent = courseEntity.Students.FirstOrDefault(s => s.Id == studentId);
-        if (linkedStudent is not null)
-            courseEntity.Students.Remove(linkedStudent);
-
-        courseEntity.Students.Add(studentEntity);
+        await Context.Courses
+            .Where(ce => ce.StudentIds.Contains(studentId))
+            .ForEachAsync(ce => ce.StudentIds.Remove(studentId));
+        courseEntity.StudentIds.Add(studentId);
 
         await Context.SaveChangesAsync();
-        */
 
         return mapper.Map<CourseDomain>(courseEntity);
     }
