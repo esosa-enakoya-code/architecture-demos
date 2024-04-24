@@ -4,7 +4,6 @@ using Course.Services;
 using Course.Shared.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Student.Shared.Services;
 
 namespace Course;
 
