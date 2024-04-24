@@ -3,7 +3,6 @@ using Course.Data.Repositories;
 using Course.Domain;
 using Course.Shared.DTOs.RequestDTOs;
 using Course.Shared.DTOs.ResponseDTOs;
-using System.Net.Http;
 
 namespace Course.Services;
 
