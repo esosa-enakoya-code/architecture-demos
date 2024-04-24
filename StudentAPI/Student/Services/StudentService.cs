@@ -5,8 +5,10 @@ using Student.Shared.DTOs.RequestDTOs;
 using Student.Shared.DTOs.ResponseDTOs;
 
 namespace Student.Services;
-public class StudentService(IMapper mapper, IStudentRepository repository) : IStudentService
+public class StudentService(IMapper mapper, IStudentRepository repository, IHttpClientFactory httpClientFactory) : IStudentService
 {
+    private readonly HttpClient _httpClient = httpClientFactory.CreateClient("CourseAPI");
+
     public async Task<StudentGetResponseDTO> GetAsync(int id)
     {
         var student = await repository.GetAsync(id);

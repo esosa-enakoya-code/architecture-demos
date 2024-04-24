@@ -15,6 +15,11 @@ public static class StudentModuleConfig
         services.AddScoped<IStudentService, StudentService>();
         services.AddAutoMapper(typeof(StudentModuleConfig).Assembly);
 
+        services.AddHttpClient("CourseAPI", client =>
+        {
+            client.BaseAddress = new Uri("http://localhost:5161");
+        });
+
         return services;
     }
 }

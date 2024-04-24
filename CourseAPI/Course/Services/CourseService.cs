@@ -3,11 +3,14 @@ using Course.Data.Repositories;
 using Course.Domain;
 using Course.Shared.DTOs.RequestDTOs;
 using Course.Shared.DTOs.ResponseDTOs;
+using System.Net.Http;
 
 namespace Course.Services;
 
-public class CourseService(IMapper mapper, ICourseRepository repository) : ICourseService
+public class CourseService(IMapper mapper, ICourseRepository repository, IHttpClientFactory httpClientFactory) : ICourseService
 {
+    private readonly HttpClient _httpClient = httpClientFactory.CreateClient("StudentAPI");
+
     public async Task<CourseGetResponseDTO> GetAsync(int id)
     {
         var course = await repository.GetAsync(id);
