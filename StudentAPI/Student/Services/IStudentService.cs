@@ -1,7 +1,7 @@
 ﻿using Student.Shared.DTOs.RequestDTOs;
 using Student.Shared.DTOs.ResponseDTOs;
 
-namespace Student.Shared.Services;
+namespace Student.Services;
 
 public interface IStudentService
 {

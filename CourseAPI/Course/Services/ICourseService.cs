@@ -1,7 +1,7 @@
 ﻿using Course.Shared.DTOs.RequestDTOs;
 using Course.Shared.DTOs.ResponseDTOs;
 
-namespace Course.Shared.Services;
+namespace Course.Services;
 
 public interface ICourseService
 {

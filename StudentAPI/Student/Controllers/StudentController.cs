@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Student.Shared.Services;
 using Student.Shared.DTOs.RequestDTOs;
+using Student.Services;
 
 namespace Student.Controllers;
 

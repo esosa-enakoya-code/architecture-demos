@@ -1,6 +1,6 @@
-﻿using Course.Shared.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Course.Shared.DTOs.RequestDTOs;
+using Course.Services;
 
 namespace Course.Controllers;
 
