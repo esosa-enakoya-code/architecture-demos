@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Course.Shared.DTOs.ResponseDTOs;
+using Shared.Util;
 using Student.Data.Repositories;
 using Student.Domain;
 using Student.Shared.DTOs.RequestDTOs;
@@ -12,16 +14,16 @@ public class StudentService(IMapper mapper, IStudentRepository repository, IHttp
     public async Task<StudentGetResponseDTO> GetAsync(int id)
     {
         var student = await repository.GetAsync(id);
-        //var course = await courseService.Value.GetAsync(student.CourseId);
+        var course = await _httpClient.FetchAsync<CourseCreateResponseDTO>(HttpMethod.Get, $"course/{id}");
 
         var response = mapper.Map<StudentGetResponseDTO>(student);
-        //response.CourseName = course.Name;
+        response.CourseName = course?.Name;
         return response;
     }
 
-    public async Task<StudentGetBatchResponseDTO> GetBatchAsync(int[] ids)
+    public async Task<StudentGetBatchResponseDTO> GetBatchAsync(StudentGetBatchRequestDTO request)
     {
-        var students = await repository.GetBatchAsync(ids);
+        var students = await repository.GetBatchAsync(request.Ids);
         return mapper.Map<StudentGetBatchResponseDTO>(students);
     }
 

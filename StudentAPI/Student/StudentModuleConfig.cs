@@ -17,7 +17,7 @@ public static class StudentModuleConfig
 
         services.AddHttpClient("CourseAPI", client =>
         {
-            client.BaseAddress = new Uri("http://localhost:5161");
+            client.BaseAddress = new Uri("http://localhost:5161/api/");
         });
 
         return services;
