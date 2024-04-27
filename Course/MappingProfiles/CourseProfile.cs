@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Course.Domain;
 using Course.Data.Entities;
-using Course.Shared.DTOs.ResponseDTOs;
-using Course.Shared.DTOs.RequestDTOs;
+using Course.Shared.ResponseDTOs;
+using Course.Shared.MessageContracts;
 
 namespace Course.MappingProfiles;
 
@@ -15,7 +15,7 @@ public class CourseProfile : Profile
 
         CreateMap<CourseDomain, CourseGetResponseDTO>();
 
-        CreateMap<CourseCreateRequestDTO, CourseDomain>();
+        CreateMap<ICourseCreateContract, CourseDomain>();
         CreateMap<CourseDomain, CourseCreateResponseDTO>();
 
         CreateMap<CourseDomain, CourseEnrollResponseDTO>();

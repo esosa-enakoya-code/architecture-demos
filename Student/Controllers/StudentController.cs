@@ -1,18 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Student.Shared.Services;
-using Student.Shared.DTOs.RequestDTOs;
+using MassTransit;
+using Student.Shared.MessageContracts;
+using Student.Shared.ResponseDTOs;
+using Student.Shared.RequestDTOs;
 
 namespace Student.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public sealed class StudentController(IStudentService service) : ControllerBase
+public sealed class StudentController(IBus bus) : ControllerBase
 {
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get([FromRoute] int id) 
-        => Ok(await service.GetAsync(id));
+    public async Task<IActionResult> Get([FromRoute] int id)
+    {
+        var client = bus.CreateRequestClient<IStudentGetContract>();
+        return Ok(await client.GetResponse<StudentGetResponseDTO>(new { Id = id }));
+    }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> Create([FromBody] StudentCreateRequestDTO request) 
-        => Ok(await service.CreateAsync(request));
+    public async Task<IActionResult> Create([FromBody] StudentCreateRequestDTO request) {
+        var client = bus.CreateRequestClient<IStudentCreateContract>();
+        return Ok(await client.GetResponse<StudentCreateResponseDTO>(request));
+    }
 }

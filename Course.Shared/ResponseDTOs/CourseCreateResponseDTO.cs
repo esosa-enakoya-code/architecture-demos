@@ -1,4 +1,4 @@
-﻿namespace Course.Shared.DTOs.ResponseDTOs;
+﻿namespace Course.Shared.ResponseDTOs;
 
 public sealed record CourseCreateResponseDTO
 {

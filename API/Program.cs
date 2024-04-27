@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Student;
 using Course;
+using MassTransit;
+using Student.Consumers;
 
 namespace API;
 
@@ -21,6 +23,31 @@ public class Program
 
         services.AddStudentModule(connectionString);
         services.AddCourseModule(connectionString);
+
+        var rabbitMQConfiguration = configuration.GetSection("RabbitMQ");
+        services.AddMassTransit(x =>
+        {
+            x.AddConsumer<StudentGetConsumer>();
+            x.AddConsumer<StudentCreateConsumer>();
+            x.AddConsumer<StudentGetBatchConsumer>();
+            x.AddConsumer<StudentEnrollConsumer>();
+
+            x.AddConsumer<CourseGetConsumer>();
+            x.AddConsumer<CourseCreateConsumer>();
+            x.AddConsumer<CourseEnrollConsumer>();
+
+            x.UsingRabbitMq((context, cfg) =>
+            {
+                _ = ushort.TryParse(rabbitMQConfiguration["Port"], out ushort port);
+                cfg.Host(rabbitMQConfiguration["Host"], port, rabbitMQConfiguration["VirtualHost"], h =>
+                {
+                    h.Username(rabbitMQConfiguration["Username"] ?? throw new InvalidOperationException("No Username Found"));
+                    h.Password(rabbitMQConfiguration["Password"] ?? throw new InvalidOperationException("No Password Found"));
+                });
+
+                cfg.ConfigureEndpoints(context);
+            });
+        });
 
         var app = builder.Build();
 

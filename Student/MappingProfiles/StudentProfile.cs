@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Student.Domain;
 using Student.Data.Entities;
-using Student.Shared.DTOs.ResponseDTOs;
-using Student.Shared.DTOs.RequestDTOs;
+using Student.Domain;
+using Student.Shared.MessageContracts;
+using Student.Shared.ResponseDTOs;
 
 namespace Student.MappingProfiles;
 
@@ -15,7 +15,7 @@ public class StudentProfile : Profile
 
         CreateMap<StudentDomain, StudentGetResponseDTO>();
 
-        CreateMap<StudentCreateRequestDTO, StudentDomain>();
+        CreateMap<IStudentCreateContract, StudentDomain>();
         CreateMap<StudentDomain, StudentCreateResponseDTO>();
 
         CreateMap<StudentDomain, StudentEnrollResponseDTO>();
