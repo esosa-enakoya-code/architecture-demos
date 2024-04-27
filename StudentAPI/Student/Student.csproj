@@ -20,9 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Course.Shared\Course.Shared.csproj" />
-    <ProjectReference Include="..\Shared\Shared.csproj" />
-    <ProjectReference Include="..\Student.Shared\Student.Shared.csproj" />
+    <Reference Include="Course.Shared">
+      <HintPath>..\..\Shared\Course.Shared\bin\Debug\net8.0\Course.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Shared">
+      <HintPath>..\..\Shared\Shared\bin\Debug\net8.0\Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Student.Shared">
+      <HintPath>..\..\Shared\Student.Shared\bin\Debug\net8.0\Student.Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
