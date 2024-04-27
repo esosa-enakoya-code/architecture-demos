@@ -5,5 +5,26 @@
 - [Microservices](https://github.com/esosa-enakoya-code/architecture-demos/tree/Microservices)
 - [Microservices (with Event-Driven)](https://github.com/esosa-enakoya-code/architecture-demos/tree/Microservices-Event-Driven)
 
-## Extra steps
-install RabbitMq via [rabbitmq.com](https://www.rabbitmq.com/docs/download)
+## Setup
+1. install RabbitMQ via [rabbitmq.com](https://www.rabbitmq.com/docs/download)
+2. make sure its running
+3. update appsettings with your own configuration
+```c#
+"ConnectionStrings": {
+    "DbConnectionString": ""
+},
+"RabbitMQ": {
+    "Host": "",
+    "VirtualHost": "",
+    "Port": "",
+    "Username": "",
+    "Password": ""
+},
+```
+4. update database with migrations in root of application
+```powershell
+dotnet ef database update -p Student -s API -c StudentDbContext
+dotnet ef database update -p Course -s API -c CourseDbContext
+```
+
+5. run the application
