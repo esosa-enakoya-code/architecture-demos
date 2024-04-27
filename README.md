@@ -26,5 +26,6 @@
 dotnet ef database update -p Student -s API -c StudentDbContext
 dotnet ef database update -p Course -s API -c CourseDbContext
 ```
+5. build all projects in shared folder
 
-5. run the application
+6. run the application
