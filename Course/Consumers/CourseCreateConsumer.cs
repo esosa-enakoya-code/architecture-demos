@@ -5,7 +5,7 @@ using Course.Shared.MessageContracts;
 using Course.Shared.ResponseDTOs;
 using MassTransit;
 
-namespace Student.Consumers;
+namespace Course.Consumers;
 
 public sealed class CourseCreateConsumer(IMapper mapper, ICourseRepository repository) : IConsumer<ICourseCreateContract>
 {

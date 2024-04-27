@@ -6,11 +6,11 @@ using MassTransit;
 using Student.Shared.MessageContracts;
 using Student.Shared.ResponseDTOs;
 
-namespace Student.Consumers;
+namespace Course.Consumers;
 
 public sealed class CourseEnrollConsumer
-    (IMapper mapper, 
-    ICourseRepository repository, 
+    (IMapper mapper,
+    ICourseRepository repository,
     IRequestClient<IStudentGetContract> getRequestClient,
     IRequestClient<IStudentEnrollContract> enrollRequestClient,
     IRequestClient<IStudentGetBatchContract> getBatchRequestClient) : IConsumer<ICourseEnrollContract>

@@ -6,7 +6,7 @@ using MassTransit;
 using Student.Shared.MessageContracts;
 using Student.Shared.ResponseDTOs;
 
-namespace Student.Consumers;
+namespace Course.Consumers;
 
 public sealed class CourseGetConsumer(IMapper mapper, ICourseRepository repository, IRequestClient<IStudentGetBatchContract> requestClient)
     : IConsumer<ICourseGetContract>

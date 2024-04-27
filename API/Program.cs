@@ -3,6 +3,7 @@ using Student;
 using Course;
 using MassTransit;
 using Student.Consumers;
+using Course.Consumers;
 
 namespace API;
 
