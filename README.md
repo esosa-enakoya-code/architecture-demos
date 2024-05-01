@@ -29,3 +29,10 @@ dotnet ef database update -p Course -s CourseAPI -c CourseDbContext
 5. build all projects in shared folder
 
 6. run the application
+
+## Microservices (with Event-Driven)
+The only thing that changes from [Modular-Monolithic (with Event-Driven)](https://github.com/esosa-enakoya-code/architecture-demos/tree/Modular-Monolithic-Event-Driven) is that all modules are now seperate. So now Shared projects get put in seperate solutions and the actual projects aswell while giving them there own database and API.
+
+I hope that you now understand why you shouldn't use services or API calls to interact with other components, it will add a lot of code spaghetti that you don't want. This approach cleans everything up with proper separation of concerns. While making it future-proof as well, everything can scale properly too. And events can keep existing even on crashes of multiple services. Adding new modules is easy now as well, this is because you won't have to copy-paste all API calls and double-check the available API. You just put any event on the bus, and if there is a consumer, it will get handled. It doesn't matter what service responds either all that matters is that you have data when you need it.
+
+Now you know how to create the main architectures that are relevant in 2024. Congratulations on getting this far.
