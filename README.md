@@ -30,6 +30,24 @@ dotnet ef database update -p Course -s CourseAPI -c CourseDbContext
 
 6. run the application
 
+## Explanation
+This is an API that can do the following:
+- Create a student
+- Get a student
+- Create a course
+- Get a course
+- Enroll a student to a course
+
+I use a layered structure to seperate logic for better showcasing and those layers are: 
+- Controller (used to call to API(s))
+- Comunication (used to comunicate between persistence and controller in the form of services or consumers)
+- Persistence (used for storing and obtaining data)
+
+For the extras:
+- AutoMapper (mapping between classes)
+- DTOs & domain objects (for comunication between layers)
+- Migrations via EntityFrameworkCore (to setup the database(s))
+
 ## Microservices (with Event-Driven)
 The only thing that changes from [Modular-Monolithic (with Event-Driven)](https://github.com/esosa-enakoya-code/architecture-demos/tree/Modular-Monolithic-Event-Driven) is that all modules are now seperate. So now Shared projects get put in seperate solutions and the actual projects aswell while giving them there own database and API.
 
