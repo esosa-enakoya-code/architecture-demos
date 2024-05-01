@@ -6,14 +6,14 @@
 - [Microservices (with Event-Driven)](https://github.com/esosa-enakoya-code/architecture-demos/tree/Microservices-Event-Driven)
 
 ## Setup
-3. update appsettings with your own configuration
+1. update appsettings with your own configuration
 ```c#
 "ConnectionStrings": {
     "DbConnectionString": ""
 },
 ```
-4. update database with migrations in root of application
+2. update database with migrations in root of application
 ```powershell
 dotnet ef database update
 ```
-5. run the application
+3. run the application
