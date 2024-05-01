@@ -18,9 +18,7 @@ dotnet ef database update -p Student -s StudentAPI -c StudentDbContext
 dotnet ef database update -p Course -s CourseAPI -c CourseDbContext
 ```
 3. build all projects in shared folder
-
 4. run the application
-5. 
 ## Explanation
 This is an API that can do the following:
 - Create a student
