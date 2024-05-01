@@ -14,8 +14,8 @@
 ```
 2. update database with migrations in root of application
 ```powershell
-dotnet ef database update -p Student -s API -c StudentDbContext
-dotnet ef database update -p Course -s API -c CourseDbContext
+dotnet ef database update -p Student -s StudentAPI -c StudentDbContext
+dotnet ef database update -p Course -s CourseAPI -c CourseDbContext
 ```
 3. build all projects in shared folder
 
